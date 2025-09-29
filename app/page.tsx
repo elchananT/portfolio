@@ -2,8 +2,8 @@ import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
-    <div>
-        <Hero />
+      <div className="bg-[#001219] overflow-hidden">
+            <Hero />
     </div>
   );
 }
