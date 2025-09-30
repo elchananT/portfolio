@@ -4,9 +4,9 @@ import {Quote} from "lucide-react";
 
 const About = () => {
     return (
-        <div className="relative bg-[#030116] w-screen h-full flex flex-col items-center py-20 px-8 xl:px-40">
+        <div className="relative bg-[#030116] w-screen h-full flex flex-col items-center pt-20 px-8 xl:px-40">
                 <p className="absolute text-white left-16 top-76 md:left-90 md:top-12 xl:left-130 font-mono font-bold text-7xl -rotate-30">&</p>
-                <div className="grid grid-cols-2 md:grid-cols-3  grid-rows-3 gap-6 w-full">
+                <div className="grid grid-cols-2 md:grid-cols-3  grid-rows-3 md:grid-rows-2 gap-6 w-full">
                     <div className="flex md:flex-col bg-[#09051C] col-span-2 row-span-1 md:col-span-1 md:row-span-2 border border-gray-100/20 rounded-md max-md:rounded-t-3xl md:rounded-l-3xl  px-10 pt-10">
                         <div>
                             <h2 className="text-gray-50 text-xl md:text-2xl font-light mb-6">Web Developer</h2>
@@ -75,7 +75,7 @@ const About = () => {
                     </div>
 
                 </div>
-                <h2 className="text-gray-50 text-9xl font-cormorant w-screen text-center">Get to Know</h2>
+                <h2 className="mt-20 text-gray-50 text-9xl font-cormorant w-screen text-center">Get to Know</h2>
         </div>
     )
 }
