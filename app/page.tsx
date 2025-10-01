@@ -1,7 +1,7 @@
 import Hero from "@/components/Hero";
 import IEm from "@/components/IEm";
 import About from "@/components/About";
-import Image from "next/image";
+import WhatIBuild from "@/components/WhatIBuild";
 
 export default function Home() {
   return (
@@ -9,6 +9,7 @@ export default function Home() {
         <Hero />
         <IEm/>
         <About/>
+        <WhatIBuild/>
     </div>
   );
 }
