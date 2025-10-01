@@ -2,7 +2,7 @@ import React from 'react'
 import {MarqueeContent, MarqueeFade, MarqueeItem} from "./ui/shadcn-io/marquee";
 
 const IEm = () => {
-    return <div className="relative bg-[#F4F3EE] h-[60vh]">
+    return <div className="relative bg-[#F4F3EE] h-[60vh] overflow-x-hidden">
 
         <div className="flex flex-col items-center justify-center h-full gap-14">
 
