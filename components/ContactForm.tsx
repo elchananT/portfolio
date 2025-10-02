@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import {useForm} from "react-hook-form";
 import {motion, useScroll, useTransform} from "framer-motion";
-import SocialLinks from "@/components/SocialLinks";
+import SocialLinks from "./SocialLinks";
 
 
 type ContactFormData = {
@@ -27,7 +27,7 @@ export default function ContactForm() {
     const scale = useTransform(scrollYProgress, [0.3, 0.4], [0.5, 1])
     const fontSize = useTransform(scrollYProgress, [0, 0.4], ['175px', '110px'])
     const borderRadius = useTransform(scrollYProgress, [0.3, 0.4], ['90px', '0px'])
-    const y = useTransform(scrollYProgress, [0.3, 0.4], [-500, 0])
+    const x = useTransform(scrollYProgress, [0, 0.4], [600, 0])
 
     const {
         register,
@@ -47,7 +47,7 @@ export default function ContactForm() {
     <motion.div
         id="contact"
         ref={ref}
-        style={{ scale , borderRadius, y }}
+        style={{ scale , borderRadius, x }}
         className="min-h-screen bg-[#0a1628] flex items-center justify-center p-6 md:p-12"
     >
       <div className="w-full max-w-6xl grid md:grid-cols-2 gap-12 md:gap-20">
