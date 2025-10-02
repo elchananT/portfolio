@@ -25,7 +25,7 @@ export default function ContactForm() {
 
     const opacity = useTransform(scrollYProgress, [0.4, 0.41], [0, 1])
     const scale = useTransform(scrollYProgress, [0.3, 0.4], [0.5, 1])
-    const fontSize = useTransform(scrollYProgress, [0, 0.4], ['300px', '110px'])
+    const fontSize = useTransform(scrollYProgress, [0, 0.4], ['175px', '110px'])
     const borderRadius = useTransform(scrollYProgress, [0.3, 0.4], ['90px', '0px'])
     const y = useTransform(scrollYProgress, [0.3, 0.4], [-500, 0])
 
@@ -45,6 +45,7 @@ export default function ContactForm() {
 
   return (
     <motion.div
+        id="contact"
         ref={ref}
         style={{ scale , borderRadius, y }}
         className="min-h-screen bg-[#0a1628] flex items-center justify-center p-6 md:p-12"

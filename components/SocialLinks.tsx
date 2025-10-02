@@ -4,7 +4,7 @@ import {Github, Instagram, Linkedin} from "lucide-react";
 
 const SocialLinks = () => {
     return (
-        <div className="space-x-8 flex">
+        <div className="flex items-center gap-4">
             <Link
                 href="https://linkedin.com"
                 target="_blank"

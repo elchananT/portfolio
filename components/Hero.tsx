@@ -14,7 +14,7 @@ const Hero = () => {
                     className="text-white"
                 />
                     <motion.div
-                        className="grid grid-cols-2 gap-6 items-center mt-6 mb-10"
+                        className="flex flex-col md:grid grid-cols-2 gap-6 items-center mt-6 mb-10"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, delay: 4 }}
