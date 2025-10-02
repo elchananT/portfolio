@@ -1,30 +1,29 @@
 import { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
+import Link from "next/link";
 
 type ButtonProps = {
     children: ReactNode;
     onClick?: () => void;
     className?: string;
-    variant?: "primary" | "secondary";
+    href: string;
 };
 
-const Button = ({ children, onClick, className = "", variant = "primary" }: ButtonProps) => {
+const Button = ({ children, onClick, className = "", href }: ButtonProps) => {
     const style = twMerge(
-        "px-4 py-2 rounded-lg font-mono hover:scale-110 transition-all duration-200",
-
-        variant === "primary" && "bg-[#CCE3DE] text-[#101010] px-6 py-3 text-lg",
-        variant === "secondary" && "bg-[#CFE1B9] text-[#101010]",
+        "px-4 py-2 rounded-lg font-mono hover:scale-110 bg-transparent border border-[#CCE3DE] text-[#CCE3DE] hover:text-[#0a1628] hover:bg-[#CCE3DE] text-lg font-medium flex items-center gap-2 transition duration-300",
 
         className
     );
 
     return (
-        <button
+        <Link
+            href={`/${href}`}
             onClick={onClick}
             className={style}
         >
             {children}
-        </button>
+        </Link>
     );
 };
 
