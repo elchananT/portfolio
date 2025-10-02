@@ -1,10 +1,10 @@
 'use client'
 
-import {AppleHelloEnglishEffect} from "@/components/ui/shadcn-io/apple-hello-effect";
+import {AppleHelloEnglishEffect} from "./ui/shadcn-io/apple-hello-effect";
 import {motion} from "motion/react";
-import TextPressure from "@/components/ui/shadcn-io/text-pressure";
-import TypingText from "@/components/ui/shadcn-io/typing-text";
-import Button from "@/components/Button";
+import TextPressure from "./ui/shadcn-io/text-pressure";
+import TypingText from "./ui/shadcn-io/typing-text";
+import Button from "./Button";
 
 const Hero = () => {
     return (
@@ -49,7 +49,7 @@ const Hero = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 5 }}
                     >
-                        <Button>
+                        <Button href={"booking"}>
                             Book a meeting
                         </Button>
                     </motion.div>
