@@ -27,7 +27,7 @@ const cards: Card[] = [
 
 const WhatIBuild = () => {
     return (
-        <div className="bg-gray-100 pt-10 md:pt-20">
+        <div className="pt-10 md:pt-20">
             <div className="relative flex justify-center">
                 <h2 className="absolute left-5 top-4 md:left-10 md:top-0 z-0 text-4xl md:text-8xl font-extralight">What I</h2>
                 <h2 className="absolute right-10 top-4 md:right-20 md:top-0 z-0 text-4xl md:text-8xl font-extralight">Build</h2>
