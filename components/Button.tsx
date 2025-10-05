@@ -21,7 +21,7 @@ const Button = ({ children, onClick, className = "", href, disabled, background 
     if (href) {
         return (
             <Link
-                href={`/${href}`}
+                href={`${href}`}
                 className={`${style} bg-transparent`}
             >
                 {children}

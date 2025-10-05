@@ -17,7 +17,7 @@ export default function Contact() {
     const scale = useTransform(scrollYProgress, [0.3, 0.4], [0.5, 1])
     const fontSize = useTransform(scrollYProgress, [0, 0.4], ['175px', '110px'])
     const borderRadius = useTransform(scrollYProgress, [0.3, 0.4], ['90px', '0px'])
-    const x = useTransform(scrollYProgress, [0, 0.4], [600, 0])
+    const y = useTransform(scrollYProgress, [0, 0.4], [400, 0])
 
 
 
@@ -25,7 +25,7 @@ export default function Contact() {
     <motion.div
         id="contact"
         ref={ref}
-        style={{ scale , borderRadius, x }}
+        style={{ scale , borderRadius, y }}
         className="min-h-screen bg-[#0a1628] flex items-center justify-center p-6 md:p-12"
     >
       <div className="w-full max-w-6xl grid md:grid-cols-2 gap-12 md:gap-20">

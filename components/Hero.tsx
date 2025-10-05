@@ -49,8 +49,8 @@ const Hero = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 5 }}
                     >
-                        <Button href={"booking"}>
-                            Book a meeting
+                        <Button href={"#contact"}>
+                            Get in touch
                         </Button>
                     </motion.div>
         </main>
