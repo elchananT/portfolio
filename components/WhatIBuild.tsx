@@ -11,17 +11,17 @@ const cards: Card[] = [
     {
         title: "Designing",
         description: "I love to design new stuff in many creative ways",
-        image: "/design-img.png"
+        image: "/design-img.webp"
     },
     {
         title: "Code & Programing",
         description: "Love this and sometimes giving hours to fix a bug",
-        image: "/development-img.png",
+        image: "/development-img.webp",
     },
     {
         title: "Sites",
         description: "This is one of my spacial and the favorite to build and design",
-        image: "/website-img.png",
+        image: "/website-img.webp",
     },
 ];
 

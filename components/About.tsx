@@ -55,7 +55,7 @@ const About = () => {
 
                     <div className="flex justify-center items-center bg-[#09051C] col-span-1 row-span-1 border rounded-md border-gray-100/20">
                         <Image
-                            src="/hero.png"
+                            src="/hero.webp"
                             alt="hero"
                             height={220}
                             width={220}

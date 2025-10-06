@@ -104,15 +104,11 @@ const ContactForm = () => {
                 </Button>
             </form>
 
-            {error ? (
+            {error && (
                 <div className="fade-in-10 text-red-400 mt-16">
                     {error}
                 </div>
-            ) : (
-                <div className="fade-in-10 text-green-400 mt-16">
-                    Mail send successfully!
-                </div>
-            )}
+            )   }
         </div>
     )
 }

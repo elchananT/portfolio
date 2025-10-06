@@ -1,6 +1,7 @@
 import {Chicle, Cormorant_Upright, Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import {ReactNode} from "react";
+import type {Metadata} from "next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,6 +24,14 @@ const chicle = Chicle({
     variable: "--font-chicle" ,
     subsets: ["latin"]
 })
+
+export const metadata: Metadata = {
+    title: "Elchanan | Portfolio",
+    description: "My portfolio to showcase my abilities to design and develop a great looking & feeling websites",
+    icons: {
+        icon: "/favicon-new.svg",
+    },
+};
 
 export default function RootLayout({
   children,
