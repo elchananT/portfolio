@@ -23,7 +23,7 @@ export default function Home() {
         <IEm/>
         <About/>
         <WhatIBuild/>
-      <VideoCarousel videos={['/videos/nutrition.webm', '/videos/gym.webm', '/videos/personal coach.webm']}/>
+      <VideoCarousel videos={['/videos/gym.webm', '/videos/nutrition.webm', '/videos/personal coach.webm']}/>
       <Contact/>
       <FooterCta/>
       <Footer/>
