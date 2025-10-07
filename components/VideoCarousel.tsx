@@ -1,188 +1,105 @@
-"use client"
+'use client'
 
-import { useEffect, useRef, useState } from "react"
+import { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import {useInView} from "react-intersection-observer";
+import Image from "next/image";
 
-interface VideoCarouselProps {
-  videos: string[]
+type Video = {
+    id: number;
+    src: string;
+    imagePlaceholder: string;
 }
 
-export function VideoCarousel({ videos }: VideoCarouselProps) {
-  const infiniteVideos = [...videos, ...videos, ...videos]
-  const [activeIndex, setActiveIndex] = useState(videos.length) // Start at middle set
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
-  const containerRef = useRef<HTMLDivElement>(null)
-  const isScrollingRef = useRef(false)
-  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+const videos: Video[] = [
+    { id: 1, src: '/videos/gym.webm', imagePlaceholder: "/placeholder-gym.png" },
+    { id: 2, src: '/videos/nutrition.webm', imagePlaceholder: '/placeholder-nutrition.png'},
+    { id: 3, src: '/videos/personal coach.webm', imagePlaceholder: '/placeholder-personal coach.png' },
+];
 
-  const LOAD_RANGE = 2
+export function VideoCarousel() {
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const [isVideoReady, setIsVideoReady] = useState<Record<number, boolean>>({});
 
-  const shouldLoadVideo = (index: number) => {
-    return Math.abs(index - activeIndex) <= LOAD_RANGE
-  }
+    const { ref, inView} = useInView({ threshold: 0.2 })
 
-  const getPreloadStrategy = (index: number) => {
-    if (index === activeIndex) return "auto"
-    if (Math.abs(index - activeIndex) === 1) return "metadata"
-    return "none"
-  }
+    // Sample video URLs (using placeholder videos)
 
-  // Handle video playback - only play the active video
-  useEffect(() => {
-    videoRefs.current.forEach((video, index) => {
-      if (video) {
-        if (index === activeIndex) {
-          video.play().catch(() => {
-            console.log("Autoplay prevented for video", index)
-          })
-        } else {
-          video.pause()
-          video.currentTime = 0
-        }
-      }
-    })
-  }, [activeIndex])
+    const handlePrev = (): void => {
+        setCurrentIndex((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
+    };
 
-  // Scroll to center the active video
-  useEffect(() => {
-    if (containerRef.current && !isScrollingRef.current) {
-      const activeElement = containerRef.current.children[activeIndex] as HTMLElement
-      if (activeElement) {
-        activeElement.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
-          inline: "center",
-        })
-      }
-    }
-  }, [activeIndex])
+    const handleNext = (): void => {
+        setCurrentIndex((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
+    };
 
-  useEffect(() => {
-    if (activeIndex < videos.length / 2) {
-      // Near the start, jump to middle set
-      setActiveIndex(activeIndex + videos.length)
-    } else if (activeIndex >= videos.length * 2.5) {
-      // Near the end, jump to middle set
-      setActiveIndex(activeIndex - videos.length)
-    }
-  }, [activeIndex, videos.length])
+    return (
+        <div className="flex items-center justify-center min-h-screen p-4">
+            <div className="w-full flex flex-col items-center">
+                <div className="flex justify-center items-center md:mb-20">
+                    <h2 className="text-4xl md:text-7xl text-center font-cormorant font-extralight">Watch some of my work</h2>
+                </div>
 
-  useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
-
-    const handleScroll = () => {
-      isScrollingRef.current = true
-
-      // Clear existing timeout
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current)
-      }
-
-      // Set new timeout to detect when scrolling stops
-      scrollTimeoutRef.current = setTimeout(() => {
-        isScrollingRef.current = false
-
-        // Find the video closest to center
-        const containerRect = container.getBoundingClientRect()
-        const containerCenter = containerRect.left + containerRect.width / 2
-
-        let closestIndex = 0
-        let closestDistance = Number.POSITIVE_INFINITY
-
-        Array.from(container.children).forEach((child, index) => {
-          const childRect = child.getBoundingClientRect()
-          const childCenter = childRect.left + childRect.width / 2
-          const distance = Math.abs(containerCenter - childCenter)
-
-          if (distance < closestDistance) {
-            closestDistance = distance
-            closestIndex = index
-          }
-        })
-
-        if (closestIndex !== activeIndex) {
-          setActiveIndex(closestIndex)
-        }
-      }, 150)
-    }
-
-    container.addEventListener("scroll", handleScroll)
-    return () => {
-      container.removeEventListener("scroll", handleScroll)
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current)
-      }
-    }
-  }, [activeIndex])
-
-  const handleVideoClick = (index: number) => {
-    if (index !== activeIndex) {
-      setActiveIndex(index)
-    }
-  }
-
-  if (!videos || videos.length === 0) {
-    return <div className="flex items-center justify-center h-96 text-muted-foreground">No videos available</div>
-  }
-
-  return (
-    <div className="w-full overflow-hidden py-8">
-      <div
-        ref={containerRef}
-        className="flex items-center gap-6 overflow-x-auto px-8 snap-x snap-mandatory scrollbar-hide"
-        style={{
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-        }}
-      >
-        {infiniteVideos.map((videoUrl, index) => {
-          const isActive = index === activeIndex
-          const shouldLoad = shouldLoadVideo(index)
-
-          return (
-            <div
-              key={index}
-              className={`
-                flex-shrink-0 snap-center transition-all duration-500 ease-out cursor-pointer
-                ${isActive ? "scale-100" : "scale-75 opacity-60 hover:opacity-80"}
-              `}
-              onClick={() => handleVideoClick(index)}
-              style={{
-                width: isActive ? "640px" : "400px",
-                maxWidth: isActive ? "80vw" : "50vw",
-              }}
-            >
-              <div className="relative rounded-xl overflow-hidden bg-black">
-                <video
-                  ref={(el) => {
-                    videoRefs.current[index] = el
-                  }}
-                  src={shouldLoad ? videoUrl : undefined}
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-auto aspect-video object-cover"
-                  preload={getPreloadStrategy(index)}
-                />
-
-                {/* Overlay for non-active videos */}
-                {!isActive && (
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center"/>
-                )}
-
-                {isActive && (
-                  <div className="absolute bottom-4 right-4">
-                    <div className="text-white text-sm font-medium bg-black/50 px-3 py-1.5 rounded-full">
-                      Now Playing
+                <div className="relative w-screen h-[70vh] overflow-hidden flex justify-center items-center">
+                    {/* Video Container */}
+                        <div className="aspect-video w-4/6 bg-black rounded-xl">
+                            {isVideoReady ? (
+                                <video
+                                    key={videos[currentIndex].id}
+                                    ref={ref}
+                                    className="h-full"
+                                    src={inView ? videos[currentIndex].src : undefined}
+                                    autoPlay
+                                    loop
+                                    onLoadedData={() => setIsVideoReady(prev => ({ ...prev, [videos[currentIndex].id]: true }))}
+                                >
+                                    Your browser does not support the video tag.
+                                </video>
+                            ) : (
+                                <Image
+                                    src={videos[currentIndex].imagePlaceholder}
+                                    alt={videos[currentIndex].imagePlaceholder}
+                                    fill
+                                    objectFit="contain"
+                                    className="rounded-xl"
+                                />
+                            )}
                     </div>
-                  </div>
-                )}
-              </div>
 
+                    {/* Navigation Buttons */}
+                    <button
+                        onClick={handlePrev}
+                        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-70 hover:bg-opacity-90 text-white p-2 md:p-3 rounded-full transition-all shadow-lg z-10"
+                        aria-label="Previous video"
+                    >
+                        <ChevronLeft size={20} className="md:w-6 md:h-6"/>
+                    </button>
+
+                    <button
+                        onClick={handleNext}
+                        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-70 hover:bg-opacity-90 text-white p-2 md:p-3 rounded-full transition-all shadow-lg z-10"
+                        aria-label="Next video"
+                    >
+                        <ChevronRight size={20} className="md:w-6 md:h-6"/>
+                    </button>
+                </div>
+
+                {/* Dots Indicator */}
+                <div className="flex justify-center gap-2 mt-2">
+                    {videos.map((_, index: number) => (
+                        <button
+                            key={index}
+                            onClick={() => setCurrentIndex(index)}
+                            className={`w-3 h-3 rounded-full transition-all ${
+                                index === currentIndex
+                                    ? 'bg-blue-500 w-8'
+                                    : 'bg-gray-500 hover:bg-gray-400'
+                            }`}
+                            aria-label={`Go to video ${index + 1}`}
+                        />
+                    ))}
+                </div>
             </div>
-          )
-        })}
-      </div>
-    </div>
-  )
+        </div>
+    );
 }

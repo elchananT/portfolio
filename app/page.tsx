@@ -1,12 +1,13 @@
 import Hero from "@/components/Hero";
 import IEm from "@/components/IEm";
 import About from "@/components/About";
-import WhatIBuild from "@/components/WhatIBuild";
 import Contact from "@/components/Contact";
 import FooterCta from "@/components/FooterCTA";
 import Footer from "@/components/Footer";
-import {VideoCarousel} from "@/components/VideoCarousel";
 import type {Metadata} from "next";
+import WhatIBuild from "@/components/WhatIBuild";
+import {VideoCarousel} from "@/components/VideoCarousel";
+import React from "react";
 
 export const metadata: Metadata = {
     title: "Elchanan | Portfolio",
@@ -22,8 +23,8 @@ export default function Home() {
         <Hero />
         <IEm/>
         <About/>
-        <WhatIBuild/>
-      <VideoCarousel videos={['/videos/gym.webm', '/videos/nutrition.webm', '/videos/personal coach.webm']}/>
+          <WhatIBuild/>
+          <VideoCarousel/>
       <Contact/>
       <FooterCta/>
       <Footer/>
