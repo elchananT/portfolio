@@ -36,11 +36,11 @@ const Card = ({ index, image, title, description }: CardProps) => {
         >
             <motion.div
                 style={{
-                    height,
+                    height: height ?? '16vh',
                     width,
                     borderRadius,
                     backgroundImage: 'url("' + image + '")',
-                    objectFit: 'cover'
+                    backgroundSize: 'cover',
             }}
                 className="relative flex flex-col p-10"
             >
