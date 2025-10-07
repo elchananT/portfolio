@@ -4,9 +4,11 @@ import React, {useRef} from "react"
 import {motion, useScroll, useTransform} from "framer-motion";
 import SocialLinks from "./SocialLinks";
 import ContactForm from "@/components/ContactForm";
+import {useMediaQuery} from "@/hooks/useMediaQuery";
 
 export default function Contact() {
     const ref = useRef<HTMLDivElement>(null);
+    const isMobile = useMediaQuery('(max-width: 768px)');
 
     const {scrollYProgress} = useScroll({
         target: ref,
@@ -15,8 +17,8 @@ export default function Contact() {
 
     const opacity = useTransform(scrollYProgress, [0.4, 0.41], [0, 1])
     const scale = useTransform(scrollYProgress, [0.3, 0.4], [0.5, 1])
-    const fontSize = useTransform(scrollYProgress, [0, 0.4], ['175px', '110px'])
-    const borderRadius = useTransform(scrollYProgress, [0.3, 0.4], ['90px', '0px'])
+    const fontSize = useTransform(scrollYProgress, [0, 0.4], [isMobile ? '140px' : '300px', '110px'])
+    const borderRadius = useTransform(scrollYProgress, [0.3, 0.4], [isMobile ? '50px' : '90px', '0px'])
     const y = useTransform(scrollYProgress, [0, 0.4], [400, 0])
 
 

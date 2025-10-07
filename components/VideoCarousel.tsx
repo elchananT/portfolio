@@ -40,17 +40,19 @@ export function VideoCarousel() {
                     <h2 className="text-4xl md:text-7xl text-center font-cormorant font-extralight">Watch some of my work</h2>
                 </div>
 
-                <div className="relative w-screen h-[70vh] overflow-hidden flex justify-center items-center">
+                <div className="relative w-screen my-12 md:my-2 overflow-hidden flex justify-center items-center">
                     {/* Video Container */}
                         <div className="aspect-video w-4/6 bg-black rounded-xl">
                             {isVideoReady ? (
                                 <video
                                     key={videos[currentIndex].id}
                                     ref={ref}
-                                    className="h-full"
+                                    className="h-full text-white"
                                     src={inView ? videos[currentIndex].src : undefined}
-                                    autoPlay
+                                    autoPlay={true}
+                                    playsInline
                                     loop
+                                    controls={false}
                                     onLoadedData={() => setIsVideoReady(prev => ({ ...prev, [videos[currentIndex].id]: true }))}
                                 >
                                     Your browser does not support the video tag.

@@ -31,7 +31,7 @@ const Footer = () => {
 
             <div className="bg-gray-100 w-full h-px my-6 hover:bg-[#B9960B] transition duration-300 ease-in-out"/>
 
-            <span className="flex items-center justify-center text-gray-400 gap-2 text-xl mt-5">
+            <span className="flex items-center justify-center text-gray-400 gap-2 text-md md:text-xl mt-5">
                 <Copyright/>
                 <span>Elchanan Treistman. All rights reserved.</span>
             </span>
