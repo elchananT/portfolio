@@ -2,6 +2,7 @@ import {Chicle, Cormorant_Upright, Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import {ReactNode} from "react";
 import type {Metadata} from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +45,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} ${chicle.variable} antialiased`}
       >
         {children}
+      <SpeedInsights/>
       </body>
     </html>
   );

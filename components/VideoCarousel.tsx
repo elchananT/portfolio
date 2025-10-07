@@ -42,7 +42,7 @@ export function VideoCarousel() {
 
                 <div className="relative w-screen my-12 md:my-2 overflow-hidden flex justify-center items-center">
                     {/* Video Container */}
-                        <div className="aspect-video w-4/6 bg-black rounded-xl">
+                        <div className="aspect-video w-4/6 bg-black md:rounded-xl">
                             {isVideoReady ? (
                                 <video
                                     key={videos[currentIndex].id}
