@@ -1,12 +1,12 @@
 import React from 'react'
 import Link from "next/link";
-import {Github, Instagram, Linkedin} from "lucide-react";
+import {Facebook, Instagram, Linkedin} from "lucide-react";
 
 const SocialLinks = () => {
     return (
         <div className="flex items-center gap-4">
             <Link
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/elchanan-treistman-b39936389/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-gray-100 hover:text-blue-300 transition-colors group"
@@ -15,7 +15,7 @@ const SocialLinks = () => {
             </Link>
 
             <Link
-                href="https://instagram.com"
+                href="https://www.instagram.com/elchanan_tre/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-gray-100 hover:text-pink-300 transition-colors group"
@@ -24,12 +24,12 @@ const SocialLinks = () => {
             </Link>
 
             <Link
-                href="https://github.com"
+                href="https://www.facebook.com/profile.php?id=61582153855653"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-gray-100 hover:text-gray-600 transition-colors group"
+                className="flex items-center gap-3 text-gray-100 hover:text-blue-400 transition-colors group"
             >
-                <Github className="w-6 md:w-12 h-6 md:h-12" />
+                <Facebook className="w-6 md:w-12 h-6 md:h-12" />
             </Link>
         </div>
     )
