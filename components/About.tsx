@@ -55,11 +55,11 @@ const About = () => {
                 <div className="flex flex-col justify-center bg-[#09051C] col-span-2 row-span-1 border rounded-md border-gray-100/20 rounded-br-3xl md:h-[250px] px-4 md:px-8">
                     <Quote size={50} strokeWidth={0.5} className="text-white rotate-180 transform -translate-x-8 md:-translate-x-12 translate-y-2" />
 
-                    <p className="text-gray-200 text-sm md:text-lg font-light mb-4">
-                        Good design is as little design as possible.
+                    <p className="text-gray-200 text-xl md:text-4xl font-light mb-4">
+                        Design is not just what it looks like and feels like, design is how it works.
                     </p>
 
-                    <p className="text-gray-500 font-light md:mt-8 max-md:text-sm">Dieter Rams</p>
+                    <p className="text-gray-500 font-light text-xl md:mt-4">Steve Jobs</p>
                 </div>
 
             </div>
