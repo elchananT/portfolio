@@ -29,8 +29,8 @@ const WhatIBuild = () => {
     return (
         <div id="projects" className="pt-10 md:pt-20">
             <div className="relative flex justify-center">
-                <h2 className="absolute text-4xl md:text-9xl font-extralight font-cormorant">Get to see</h2>
-                <h3 className="absolute text-4xl md:text-7xl text-gray-700 font-extralight font-cormorant mt-32">Our process</h3>
+                <h2 className="absolute text-7xl md:text-9xl font-extralight font-cormorant">Get to see</h2>
+                <h3 className="absolute text-5xl md:text-7xl text-gray-700 font-extralight font-cormorant mt-24 md:mt-32">Our process</h3>
                 <div className="relative flex flex-col justify-center items-center mb-[500px]">
                     {cards.map(({title, description, image}: CardType, index: number) => (
                         <Card

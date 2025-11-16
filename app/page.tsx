@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Elchanan Studio | Web Design & Development",
     description: "Strategic web design and development for businesses ready to make an impact online",
     icons: {
-        icon: "/favicon-new.svg",
+        icon: "/logo.png",
     },
 };
 

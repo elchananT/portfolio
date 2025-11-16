@@ -52,7 +52,7 @@ const About = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-center bg-[#09051C] col-span-2 row-span-1 border rounded-md border-gray-100/20 rounded-br-3xl md:h-[250px] px-4 md:px-8">
+                <div className="flex flex-col justify-center bg-[#09051C] md:col-span-2 row-span-2 md:row-span-1 border rounded-md border-gray-100/20 rounded-br-3xl md:h-[250px] px-4 md:px-8">
                     <Quote size={50} strokeWidth={0.5} className="text-white rotate-180 transform -translate-x-8 md:-translate-x-12 translate-y-2" />
 
                     <p className="text-gray-200 text-xl md:text-4xl font-light mb-4">

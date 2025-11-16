@@ -3,6 +3,7 @@ import "./globals.css";
 import {ReactNode} from "react";
 import type {Metadata} from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     title: "Elchanan | Portfolio",
     description: "My portfolio to showcase my abilities to design and develop a great looking & feeling websites",
     icons: {
-        icon: "/favicon-new.svg",
+        icon: "/logo.png",
     },
 };
 
@@ -44,6 +45,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} ${chicle.variable} antialiased`}
       >
+      <Navbar/>
         {children}
       <SpeedInsights/>
       </body>
