@@ -1,26 +1,26 @@
 import React from 'react'
 import Card from "./Card";
 
-type Card = {
+type CardType = {
     title: string;
     description: string;
     image: string;
 }
 
-const cards: Card[] = [
+const cards: CardType[] = [
     {
-        title: "Designing",
-        description: "I love to design new stuff in many creative ways",
+        title: "Strategy & Planning",
+        description: "We start with discovery to understand your goals, audience, and competitive landscape",
         image: "/design-img.webp"
     },
     {
-        title: "Code & Programing",
-        description: "Love this and sometimes giving hours to fix a bug",
+        title: "Design & Prototype",
+        description: "Crafting pixel-perfect designs that align with your brand and convert visitors",
         image: "/development-img.webp",
     },
     {
-        title: "Sites",
-        description: "This is one of my spacial and the favorite to build and design",
+        title: "Development & Launch",
+        description: "Building fast, secure, and scalable solutions that exceed expectations",
         image: "/website-img.webp",
     },
 ];
@@ -29,10 +29,10 @@ const WhatIBuild = () => {
     return (
         <div id="projects" className="pt-10 md:pt-20">
             <div className="relative flex justify-center">
-                <h2 className="absolute left-5 top-4 md:left-10 md:top-0 z-0 text-4xl md:text-8xl font-extralight">What I</h2>
-                <h2 className="absolute right-10 top-4 md:right-20 md:top-0 z-0 text-4xl md:text-8xl font-extralight">Build</h2>
+                <h2 className="absolute text-4xl md:text-9xl font-extralight font-cormorant">Get to see</h2>
+                <h3 className="absolute text-4xl md:text-7xl text-gray-700 font-extralight font-cormorant mt-32">Our process</h3>
                 <div className="relative flex flex-col justify-center items-center mb-[500px]">
-                    {cards.map(({title, description, image}: Card, index: number) => (
+                    {cards.map(({title, description, image}: CardType, index: number) => (
                         <Card
                             key={index}
                             index={index}
