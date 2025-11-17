@@ -11,8 +11,8 @@ export default function Contact() {
             <div className="w-full max-w-6xl grid md:grid-cols-2 gap-12 md:gap-20">
                 <div className={`flex flex-col max-md:items-center space-y-16`}>
                     <div>
-                        <h1 className="text-7xl lg:text-8xl font-extralight font-cormorant text-white mb-6">Let's Talk</h1>
-                        <p className="text-xl text-gray-300 font-light">Ready to bring your vision to life? We're here to help.</p>
+                        <h1 className="text-7xl lg:text-8xl font-extralight font-cormorant text-white mb-6">Let&#39;s Talk</h1>
+                        <p className="text-xl text-gray-300 font-light">Ready to bring your vision to life? We&#39;re here to help.</p>
                     </div>
 
                     <div>
